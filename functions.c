@@ -68,3 +68,53 @@ char sfunct(char *str, va_list arguments)
 	}
 	return (0);
 }
+
+/**
+ * dfunct - function to a number base 10 to the main string
+ * @str: pointer to string
+ * @num: integer to print
+ *
+ * Return: Void
+ */
+char dfunct(char *str, va_list arguments)
+{
+	int num = va_arg(arguments, int);
+	int a = 0, x, i, p;
+	char is_min = 'f';
+
+	if (num == -2147483648)
+	{
+		num++;
+		is_min = 't';
+	}
+
+	if (num < 0)
+	{
+		str[_strlen(str) + 1] = '\0';
+		str[_strlen(str)] = '-';
+		num = -num;
+	}
+
+	x = num;
+	while (x >= 10)
+	{
+		x = x / 10;
+		a++;
+	}
+
+	x = num;
+	for (i = 0; i <= a; i++)
+	{
+		p = x / powr(10, (a - i));
+		str[_strlen(str) + 1] = '\0';
+		str[_strlen(str)] = (p + '0');
+		x = x - (p * powr(10, (a - i)));
+
+		if (is_min == 't')
+		{
+			x++;
+			is_min = 'f';
+		}
+	}
+	return (0);
+}
