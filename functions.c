@@ -72,7 +72,7 @@ char sfunct(char *str, va_list arguments)
 /**
  * dfunct - function to a number base 10 to the main string
  * @str: pointer to string
- * @num: integer to print
+ * @arguments: integer to print
  *
  * Return: Void
  */
